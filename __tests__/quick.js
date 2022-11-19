@@ -7,24 +7,30 @@ describe("checking the todo list",() => {
             completed:true,
             dueDate:new Date().toLocaleDateString("en-CA"),
         });
-    });
-     add({
+        add({
             title:"preparing for exams",
-            completed:false,
-            dueDate:new Date().toLocaleDateString("en-CA"),
-        });
-      add({
-            title:"drinking 3 liters of water a day",
             completed:true,
             dueDate:new Date().toLocaleDateString("en-CA"),
         });
+        add({
+            title:"drinking water of 3 lts daily",
+            completed:false,
+            dueDate:new Date().toLocaleDateString("en-CA"),
+        });
+        
+        
+    });
+    
     let length = total.length;
     test("creating new todo",()=>{
-        expect(total.length).toBe(1);
+        expect(total.length).toBe(3);
     });
     test("check marking a todo as compleated",()=>{
         markAsComplete(0);
-        expect(total[0].completed).toBe(true);
+        markAsComplete(1);
+        markAsComplete(2);
+
+        expect(total[2].completed).toBe(true);
     });
     let duelist = overdue();
     test("checking retrieval of overdue items",()=>{
